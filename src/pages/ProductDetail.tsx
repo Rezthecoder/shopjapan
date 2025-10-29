@@ -80,6 +80,24 @@ const ProductDetail = () => {
               </ul>
             </div>
 
+            {/* Size Selector */}
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="mb-6">
+                <label className="block text-sm font-medium mb-3">Size</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size) => (
+                    <Button
+                      key={size}
+                      variant="outline"
+                      className="min-w-[60px]"
+                    >
+                      {size}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Quantity Selector */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">Quantity</label>

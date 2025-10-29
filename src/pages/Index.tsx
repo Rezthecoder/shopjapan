@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-fashion.jpg";
 import { ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -27,11 +27,11 @@ const Index = () => {
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl">
             <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-              Elevate Your
-              <span className="block text-secondary">Everyday</span>
+              Timeless Style
+              <span className="block text-secondary">Modern Elegance</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              Discover thoughtfully crafted products that blend timeless design with modern functionality.
+              Curated fashion essentials designed for the modern wardrobe. Quality craftsmanship meets contemporary style.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/products">
@@ -81,11 +81,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Shop by Category</h2>
-            <p className="text-muted-foreground text-lg">Find exactly what you're looking for</p>
+            <p className="text-muted-foreground text-lg">Explore our collections</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Home Decor", "Accessories", "Kitchen", "Lighting"].map((category) => (
+            {["Outerwear", "Dresses", "Tops", "Accessories"].map((category) => (
               <Link key={category} to="/products">
                 <div className="group relative aspect-square rounded-lg overflow-hidden bg-muted hover:shadow-lg transition-all duration-300">
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/20 group-hover:from-primary/90 group-hover:to-primary/30 transition-colors" />
@@ -106,7 +106,7 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4">LUXE</h3>
               <p className="text-primary-foreground/80">
-                Crafting exceptional experiences through timeless design.
+                Curating timeless fashion for the modern individual.
               </p>
             </div>
             <div>

@@ -21,7 +21,7 @@ const Products = () => {
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Collection</h1>
           <p className="text-muted-foreground text-lg max-w-2xl">
-            Discover our curated selection of premium products, thoughtfully designed for modern living.
+            Discover our curated selection of premium fashion essentials, crafted for timeless style.
           </p>
         </div>
 
