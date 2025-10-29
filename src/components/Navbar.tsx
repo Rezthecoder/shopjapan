@@ -2,12 +2,10 @@ import { ShoppingCart, Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCart } from "@/contexts/CartContext";
 
-interface NavbarProps {
-  cartItemsCount?: number;
-}
-
-const Navbar = ({ cartItemsCount = 0 }: NavbarProps) => {
+const Navbar = () => {
+  const { totalItems } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -41,9 +39,9 @@ const Navbar = ({ cartItemsCount = 0 }: NavbarProps) => {
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
-                {cartItemsCount > 0 && (
+                {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-secondary text-secondary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                    {cartItemsCount}
+                    {totalItems}
                   </span>
                 )}
               </Button>

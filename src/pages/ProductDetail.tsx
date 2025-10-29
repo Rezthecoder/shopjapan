@@ -4,11 +4,15 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { ArrowLeft, Plus, Minus, Check } from "lucide-react";
-import { toast } from "sonner";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState<string>("");
+  const { addToCart } = useCart();
+  const { toast } = useToast();
   const product = products.find(p => p.id === Number(id));
 
   if (!product) {
@@ -26,8 +30,26 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    toast.success(`Added ${quantity} ${product.name} to cart!`, {
-      icon: <Check className="h-4 w-4" />,
+    if (product.sizes && product.sizes.length > 0 && !selectedSize) {
+      toast({
+        title: "Please select a size",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: selectedSize || undefined,
+      quantity,
+    });
+
+    toast({
+      title: "Added to cart!",
+      description: `${quantity} × ${product.name} ${selectedSize ? `(${selectedSize})` : ''}`,
     });
   };
 
@@ -88,8 +110,9 @@ const ProductDetail = () => {
                   {product.sizes.map((size) => (
                     <Button
                       key={size}
-                      variant="outline"
+                      variant={selectedSize === size ? "default" : "outline"}
                       className="min-w-[60px]"
+                      onClick={() => setSelectedSize(size)}
                     >
                       {size}
                     </Button>
