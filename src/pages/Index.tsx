@@ -85,16 +85,56 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Outerwear", "Dresses", "Tops", "Accessories"].map((category) => (
-              <Link key={category} to="/products">
+            {[
+              { name: "Outerwear", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&auto=format&fit=crop" },
+              { name: "Dresses", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop" },
+              { name: "Tops", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&auto=format&fit=crop" },
+              { name: "Accessories", image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&auto=format&fit=crop" }
+            ].map((category) => (
+              <Link key={category.name} to="/products">
                 <div className="group relative aspect-square rounded-lg overflow-hidden bg-muted hover:shadow-lg transition-all duration-300">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/20 group-hover:from-primary/90 group-hover:to-primary/30 transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-white text-xl font-semibold">{category}</h3>
+                    <h3 className="text-white text-xl font-semibold">{category.name}</h3>
                   </div>
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Story</h2>
+              <p className="text-muted-foreground text-lg mb-4">
+                Founded on the principles of timeless style and quality craftsmanship, LUXE brings you carefully curated fashion essentials that stand the test of time.
+              </p>
+              <p className="text-muted-foreground text-lg mb-6">
+                Every piece in our collection is selected with care, ensuring you receive only the finest materials and impeccable design.
+              </p>
+              <Link to="/products">
+                <Button variant="secondary" size="lg">
+                  Explore Our Collection
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+            <div className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop"
+                alt="About LUXE"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
