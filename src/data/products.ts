@@ -102,13 +102,13 @@ export const products: Product[] = [
   },
   {
     id: 10,
-    name: "Denim Straight Leg Jeans",
-    price: 135.00,
-    image: "https://images.unsplash.com/photo-1542272454315-7326c4d1e7f9?w=800&auto=format&fit=crop",
+    name: "Men's Tailored Chinos",
+    price: 98.00,
+    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&auto=format&fit=crop",
     category: "Bottoms",
-    description: "Classic straight leg jeans in premium denim. Versatile fit that flatters every body type.",
-    features: ["Premium denim", "High-rise waist", "5-pocket styling", "Machine washable"],
-    sizes: ["24", "26", "28", "30", "32", "34"]
+    description: "Classic tailored chinos with a modern slim fit. Perfect for smart casual occasions.",
+    features: ["Cotton twill", "Slim fit", "Side pockets", "Machine washable"],
+    sizes: ["28", "30", "32", "34", "36", "38"]
   },
   {
     id: 11,
@@ -122,12 +122,92 @@ export const products: Product[] = [
   },
   {
     id: 12,
-    name: "Leather Crossbody Belt",
-    price: 85.00,
-    image: "https://images.unsplash.com/photo-1624222247344-550fb60583c2?w=800&auto=format&fit=crop",
+    name: "Women's Leather Tote Bag",
+    price: 245.00,
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop",
     category: "Accessories",
-    description: "Handcrafted leather belt with a minimalist buckle. Completes any outfit with sophistication.",
-    features: ["Genuine leather", "Brass buckle", "Adjustable fit", "Made in Italy"],
-    sizes: ["S", "M", "L"]
+    description: "Spacious leather tote bag with elegant design. Perfect for work or everyday use.",
+    features: ["Genuine leather", "Multiple compartments", "Adjustable handles", "Laptop sleeve"],
+    sizes: ["One Size"]
+  },
+  {
+    id: 13,
+    name: "Men's Oxford Button-Down Shirt",
+    price: 89.00,
+    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&auto=format&fit=crop",
+    category: "Tops",
+    description: "Timeless oxford shirt in premium cotton. Essential for any gentleman's wardrobe.",
+    features: ["100% cotton", "Button-down collar", "Classic fit", "Machine washable"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 14,
+    name: "Women's Pleated Midi Skirt",
+    price: 125.00,
+    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=800&auto=format&fit=crop",
+    category: "Bottoms",
+    description: "Elegant pleated midi skirt with flowing silhouette. Versatile piece for any occasion.",
+    features: ["Lightweight fabric", "Elastic waistband", "A-line fit", "Machine washable"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 15,
+    name: "Men's Bomber Jacket",
+    price: 225.00,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&auto=format&fit=crop",
+    category: "Outerwear",
+    description: "Classic bomber jacket with modern details. Perfect layering piece for transitional weather.",
+    features: ["Water-resistant", "Ribbed cuffs", "Zip pockets", "Regular fit"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 16,
+    name: "Women's Knit Cardigan",
+    price: 155.00,
+    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&auto=format&fit=crop",
+    category: "Knitwear",
+    description: "Cozy knit cardigan with button closure. Soft and comfortable for everyday wear.",
+    features: ["Wool blend", "Button front", "Ribbed trim", "Hand wash recommended"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 17,
+    name: "Men's Leather Sneakers",
+    price: 185.00,
+    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop",
+    category: "Footwear",
+    description: "Premium leather sneakers with minimalist design. Comfortable and stylish for everyday wear.",
+    features: ["Genuine leather", "Cushioned insole", "Rubber sole", "Lace-up closure"],
+    sizes: ["7", "8", "9", "10", "11", "12"]
+  },
+  {
+    id: 18,
+    name: "Women's Wrap Dress",
+    price: 175.00,
+    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Flattering wrap dress in flowing fabric. Perfect for both casual and formal occasions.",
+    features: ["Polyester blend", "Adjustable tie", "V-neckline", "Machine washable"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 19,
+    name: "Men's Wool Scarf",
+    price: 68.00,
+    image: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&auto=format&fit=crop",
+    category: "Accessories",
+    description: "Classic wool scarf for cold weather. Soft and warm with timeless style.",
+    features: ["100% wool", "Fringed edges", "Versatile styling", "Dry clean only"],
+    sizes: ["One Size"]
+  },
+  {
+    id: 20,
+    name: "Women's Trench Coat",
+    price: 425.00,
+    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&auto=format&fit=crop",
+    category: "Outerwear",
+    description: "Iconic trench coat with classic details. Essential outerwear for any wardrobe.",
+    features: ["Water-resistant", "Belted waist", "Double-breasted", "Notched collar"],
+    sizes: ["XS", "S", "M", "L", "XL"]
   }
 ];

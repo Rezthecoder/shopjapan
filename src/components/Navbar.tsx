@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const { totalItems } = useCart();
@@ -36,6 +37,7 @@ const Navbar = () => {
             <Button variant="ghost" size="icon" className="hidden md:flex">
               <Search className="h-5 w-5" />
             </Button>
+            <ThemeToggle />
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
