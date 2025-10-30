@@ -36,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <p className="text-lg font-bold text-foreground mt-2">${product.price.toFixed(2)}</p>
           </div>
           <Button variant="secondary" className="w-full" size="sm">
-            View Details
+            詳細を見る
           </Button>
         </CardFooter>
       </Card>

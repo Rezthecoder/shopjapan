@@ -19,9 +19,9 @@ const Products = () => {
       
       <main className="container mx-auto px-4 py-12">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Collection</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">コレクション</h1>
           <p className="text-muted-foreground text-lg max-w-2xl">
-            Discover our curated selection of premium fashion essentials, crafted for timeless style.
+            タイムレスなスタイルのために作られた、プレミアムファッションエッセンシャルの厳選セレクションをご覧ください。
           </p>
         </div>
 
@@ -34,7 +34,7 @@ const Products = () => {
               onClick={() => setSelectedCategory(category)}
               size="sm"
             >
-              {category}
+              {category === "All" ? "すべて" : category}
             </Button>
           ))}
         </div>
@@ -48,7 +48,7 @@ const Products = () => {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No products found in this category.</p>
+            <p className="text-muted-foreground text-lg">このカテゴリーに商品が見つかりませんでした。</p>
           </div>
         )}
       </main>

@@ -20,16 +20,16 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
-              Home
+              ホーム
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              Shop
+              ショップ
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              Collections
+              コレクション
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              About
+              アバウト
             </Link>
           </div>
 
@@ -67,28 +67,28 @@ const Navbar = () => {
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              ホーム
             </Link>
             <Link 
               to="/products" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Shop
+              ショップ
             </Link>
             <Link 
               to="/products" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Collections
+              コレクション
             </Link>
             <Link 
               to="/products" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              About
+              アバウト
             </Link>
           </div>
         )}
