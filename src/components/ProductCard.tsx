@@ -33,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mt-1">
               {product.name}
             </h3>
-            <p className="text-lg font-bold text-foreground mt-2">${product.price.toFixed(2)}</p>
+            <p className="text-lg font-bold text-foreground mt-2">¥{(product.price * 150).toFixed(0)}</p>
           </div>
           <Button variant="secondary" className="w-full" size="sm">
             詳細を見る

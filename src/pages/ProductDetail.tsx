@@ -84,7 +84,7 @@ const ProductDetail = () => {
               {product.name}
             </h1>
             <p className="text-3xl font-bold text-foreground mb-6">
-              ${product.price.toFixed(2)}
+              ¥{(product.price * 150).toFixed(0)}
             </p>
 
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -153,7 +153,7 @@ const ProductDetail = () => {
               className="w-full"
               onClick={handleAddToCart}
             >
-              Add to Cart - ${(product.price * quantity).toFixed(2)}
+              カートに追加 - ¥{(product.price * quantity * 150).toFixed(0)}
             </Button>
           </div>
         </div>
