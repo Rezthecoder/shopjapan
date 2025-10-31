@@ -101,6 +101,21 @@ const translations: Record<Language, Record<string, string>> = {
         "checkout.summary.subtotal": "Subtotal",
         "checkout.summary.shipping": "Shipping",
         "checkout.summary.total": "Total",
+
+        // About Page
+        "about.hero.title": "About LUXE",
+        "about.hero.subtitle": "We deliver refined style to your daily life through the highest quality fashion items.",
+        "about.story.title": "Our Story",
+        "about.story.p1": "LUXE is a premium fashion brand that fuses timeless beauty with modern sophistication.",
+        "about.story.p2": "Through carefully selected materials and craftsmanship, each item enhances your individuality and gives you confidence.",
+        "about.story.p3": "Our mission is to enrich people's lives through fashion and color special moments.",
+        "about.contact.title": "Contact Us",
+        "about.contact.email": "Email",
+        "about.contact.phone": "Phone",
+        "about.contact.address": "Address",
+        "about.contact.hours": "Business Hours",
+        "about.contact.hours.weekday": "Monday - Friday: 10:00 - 19:00",
+        "about.contact.hours.weekend": "Saturday - Sunday: 11:00 - 18:00",
     },
     ja: {
         // Navbar
@@ -191,6 +206,21 @@ const translations: Record<Language, Record<string, string>> = {
         "checkout.summary.subtotal": "小計",
         "checkout.summary.shipping": "配送料",
         "checkout.summary.total": "合計",
+
+        // About Page
+        "about.hero.title": "LUXE について",
+        "about.hero.subtitle": "私たちは、最高品質のファッションアイテムを通じて、お客様の日常に洗練されたスタイルをお届けします。",
+        "about.story.title": "私たちのストーリー",
+        "about.story.p1": "LUXEは、時代を超えた美しさと現代的な洗練を融合させたプレミアムファッションブランドです。",
+        "about.story.p2": "厳選された素材と職人技により、一つ一つのアイテムがお客様の個性を引き立て、自信を与えます。",
+        "about.story.p3": "私たちは、ファッションを通じて人々の生活を豊かにし、特別な瞬間を彩ることを使命としています。",
+        "about.contact.title": "お問い合わせ",
+        "about.contact.email": "メール",
+        "about.contact.phone": "電話",
+        "about.contact.address": "住所",
+        "about.contact.hours": "営業時間",
+        "about.contact.hours.weekday": "月曜日 - 金曜日: 10:00 - 19:00",
+        "about.contact.hours.weekend": "土曜日 - 日曜日: 11:00 - 18:00",
     },
 };
 

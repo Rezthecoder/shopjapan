@@ -13,39 +13,29 @@ const About = () => {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-5xl font-bold text-foreground mb-6">
-            LUXE について
+            {t("about.hero.title")}
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            私たちは、最高品質のファッションアイテムを通じて、
-            お客様の日常に洗練されたスタイルをお届けします。
+            {t("about.hero.subtitle")}
           </p>
         </div>
 
         {/* Story Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-foreground mb-6 text-center">
-            私たちのストーリー
+            {t("about.story.title")}
           </h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>
-              LUXEは、時代を超えた美しさと現代的な洗練を融合させた
-              プレミアムファッションブランドです。
-            </p>
-            <p>
-              厳選された素材と職人技により、一つ一つのアイテムが
-              お客様の個性を引き立て、自信を与えます。
-            </p>
-            <p>
-              私たちは、ファッションを通じて人々の生活を豊かにし、
-              特別な瞬間を彩ることを使命としています。
-            </p>
+            <p>{t("about.story.p1")}</p>
+            <p>{t("about.story.p2")}</p>
+            <p>{t("about.story.p3")}</p>
           </div>
         </div>
 
         {/* Contact Section */}
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-            お問い合わせ
+            {t("about.contact.title")}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -56,7 +46,7 @@ const About = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">メール</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{t("about.contact.email")}</h3>
                   <a href="mailto:contact@luxe-fashion.jp" className="text-muted-foreground hover:text-primary transition-colors">
                     contact@luxe-fashion.jp
                   </a>
@@ -68,7 +58,7 @@ const About = () => {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">電話</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{t("about.contact.phone")}</h3>
                   <a href="tel:+81-3-1234-5678" className="text-muted-foreground hover:text-primary transition-colors">
                     03-1234-5678
                   </a>
@@ -80,7 +70,7 @@ const About = () => {
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">住所</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{t("about.contact.address")}</h3>
                   <p className="text-muted-foreground">
                     〒150-0001<br />
                     東京都渋谷区神宮前1-2-3<br />
@@ -94,10 +84,10 @@ const About = () => {
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">営業時間</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{t("about.contact.hours")}</h3>
                   <p className="text-muted-foreground">
-                    月曜日 - 金曜日: 10:00 - 19:00<br />
-                    土曜日 - 日曜日: 11:00 - 18:00
+                    {t("about.contact.hours.weekday")}<br />
+                    {t("about.contact.hours.weekend")}
                   </p>
                 </div>
               </div>
