@@ -5,19 +5,18 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { ArrowLeft, Plus, Minus, Check } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const { addToCart } = useCart();
-  const { toast } = useToast();
   const product = products.find(p => p.id === Number(id));
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-100 to-fuchsia-100 dark:from-rose-950 dark:via-pink-950 dark:to-fuchsia-950">
         <Navbar />
         <div className="container mx-auto px-4 py-12 text-center">
           <h1 className="text-2xl font-bold mb-4">Product not found</h1>
@@ -31,9 +30,15 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product.sizes && product.sizes.length > 0 && !selectedSize) {
-      toast({
-        title: "Please select a size",
-        variant: "destructive",
+      toast.error("Please select a size", {
+        duration: 5000,
+        style: {
+          fontSize: '20px',
+          padding: '20px',
+          background: '#ef4444',
+          color: 'white',
+          fontWeight: 'bold',
+        },
       });
       return;
     }
@@ -47,16 +52,13 @@ const ProductDetail = () => {
       quantity,
     });
 
-    toast({
-      title: "Added to cart!",
-      description: `${quantity} × ${product.name} ${selectedSize ? `(${selectedSize})` : ''}`,
-    });
+    toast.success(`Added to cart! ${quantity} × ${product.name} ${selectedSize ? `(${selectedSize})` : ''}`);
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-violet-100 via-purple-100 to-indigo-100 dark:from-violet-950 dark:via-purple-950 dark:to-indigo-950">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <Link to="/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft className="h-4 w-4 mr-2" />
@@ -84,7 +86,7 @@ const ProductDetail = () => {
             <p className="text-3xl font-bold text-foreground mb-6">
               ${product.price.toFixed(2)}
             </p>
-            
+
             <p className="text-muted-foreground mb-8 leading-relaxed">
               {product.description}
             </p>
@@ -145,9 +147,9 @@ const ProductDetail = () => {
             </div>
 
             {/* Add to Cart */}
-            <Button 
-              variant="secondary" 
-              size="lg" 
+            <Button
+              variant="secondary"
+              size="lg"
               className="w-full"
               onClick={handleAddToCart}
             >

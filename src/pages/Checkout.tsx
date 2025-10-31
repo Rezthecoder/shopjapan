@@ -5,18 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/contexts/CartContext";
-import { useToast } from "@/hooks/use-toast";
-import { CreditCard, ArrowLeft, Download } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { toast } from "sonner";
+import { CreditCard, ArrowLeft, Download, Trash2, Plus, Minus } from "lucide-react";
 import { downloadReceipt } from "@/utils/receiptGenerator";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { items: cart, clearCart } = useCart();
-  const { toast } = useToast();
+  const { items: cart, clearCart, removeFromCart, updateQuantity } = useCart();
+  const { t } = useLanguage();
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [orderNumber, setOrderNumber] = useState("");
-  
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -60,43 +61,39 @@ const Checkout = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
-    if (!formData.firstName || !formData.lastName || !formData.email || 
-        !formData.address || !formData.city || !formData.zipCode ||
-        !formData.cardNumber || !formData.cardName || !formData.expiryDate || !formData.cvv) {
-      toast({
-        title: "情報不足",
-        description: "すべての必須項目を入力してください",
-        variant: "destructive"
-      });
+    if (!formData.firstName || !formData.lastName || !formData.email ||
+      !formData.address || !formData.city || !formData.zipCode ||
+      !formData.cardNumber || !formData.cardName || !formData.expiryDate || !formData.cvv) {
+      toast.error(t("checkout.error.title") + ": " + t("checkout.error.description"));
       return;
     }
 
     // Generate order number
     const newOrderNumber = `ORD-${Date.now()}`;
     setOrderNumber(newOrderNumber);
-    
+
     // Show success dialog
     setShowSuccessDialog(true);
   };
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-orange-100 via-yellow-100 to-red-100 dark:from-orange-950 dark:via-yellow-950 dark:to-red-950">
         <Navbar />
         <div className="container mx-auto px-4 py-20 text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-4">カートが空です</h2>
-          <Button onClick={() => navigate("/products")}>買い物を続ける</Button>
+          <h2 className="text-2xl font-bold text-foreground mb-4">{t("checkout.empty.title")}</h2>
+          <Button onClick={() => navigate("/products")}>{t("checkout.empty.cta")}</Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-12">
         <Button
           variant="ghost"
@@ -104,10 +101,10 @@ const Checkout = () => {
           className="mb-6"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          カートに戻る
+          {t("checkout.back")}
         </Button>
 
-        <h1 className="text-4xl font-bold text-foreground mb-8">お支払い</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-8">{t("checkout.title")}</h1>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
@@ -115,10 +112,10 @@ const Checkout = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Shipping Information */}
               <div className="bg-card p-6 rounded-lg border border-border">
-                <h2 className="text-2xl font-semibold text-foreground mb-6">配送先情報</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">{t("checkout.shipping.title")}</h2>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="firstName">名 *</Label>
+                    <Label htmlFor="firstName">{t("checkout.firstName")} {t("checkout.required")}</Label>
                     <Input
                       id="firstName"
                       name="firstName"
@@ -128,7 +125,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="lastName">姓 *</Label>
+                    <Label htmlFor="lastName">{t("checkout.lastName")} {t("checkout.required")}</Label>
                     <Input
                       id="lastName"
                       name="lastName"
@@ -138,7 +135,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <Label htmlFor="email">メールアドレス *</Label>
+                    <Label htmlFor="email">{t("checkout.email")} {t("checkout.required")}</Label>
                     <Input
                       id="email"
                       name="email"
@@ -149,7 +146,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <Label htmlFor="address">住所 *</Label>
+                    <Label htmlFor="address">{t("checkout.address")} {t("checkout.required")}</Label>
                     <Input
                       id="address"
                       name="address"
@@ -159,7 +156,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="city">市区町村 *</Label>
+                    <Label htmlFor="city">{t("checkout.city")} {t("checkout.required")}</Label>
                     <Input
                       id="city"
                       name="city"
@@ -169,7 +166,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="zipCode">郵便番号 *</Label>
+                    <Label htmlFor="zipCode">{t("checkout.zipCode")} {t("checkout.required")}</Label>
                     <Input
                       id="zipCode"
                       name="zipCode"
@@ -185,22 +182,22 @@ const Checkout = () => {
               <div className="bg-card p-6 rounded-lg border border-border">
                 <div className="flex items-center gap-2 mb-6">
                   <CreditCard className="h-6 w-6 text-primary" />
-                  <h2 className="text-2xl font-semibold text-foreground">お支払い情報</h2>
+                  <h2 className="text-2xl font-semibold text-foreground">{t("checkout.payment.title")}</h2>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="cardName">カード名義人 *</Label>
+                    <Label htmlFor="cardName">{t("checkout.cardName")} {t("checkout.required")}</Label>
                     <Input
                       id="cardName"
                       name="cardName"
                       value={formData.cardName}
                       onChange={handleInputChange}
-                      placeholder="山田 太郎"
+                      placeholder=""
                       required
                     />
                   </div>
                   <div>
-                    <Label htmlFor="cardNumber">カード番号 *</Label>
+                    <Label htmlFor="cardNumber">{t("checkout.cardNumber")} {t("checkout.required")}</Label>
                     <Input
                       id="cardNumber"
                       name="cardNumber"
@@ -213,7 +210,7 @@ const Checkout = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="expiryDate">有効期限 *</Label>
+                      <Label htmlFor="expiryDate">{t("checkout.expiryDate")} {t("checkout.required")}</Label>
                       <Input
                         id="expiryDate"
                         name="expiryDate"
@@ -225,7 +222,7 @@ const Checkout = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="cvv">セキュリティコード *</Label>
+                      <Label htmlFor="cvv">{t("checkout.cvv")} {t("checkout.required")}</Label>
                       <Input
                         id="cvv"
                         name="cvv"
@@ -243,7 +240,7 @@ const Checkout = () => {
 
               <Button type="submit" size="lg" className="w-full">
                 <CreditCard className="mr-2 h-5 w-5" />
-                ¥{(total * 150).toFixed(0)} - お支払いを完了
+                ¥{(total * 150).toFixed(0)} - {t("checkout.submit")}
               </Button>
             </form>
           </div>
@@ -251,11 +248,11 @@ const Checkout = () => {
           {/* Order Summary */}
           <div>
             <div className="bg-card p-6 rounded-lg border border-border sticky top-6">
-              <h2 className="text-2xl font-semibold text-foreground mb-6">注文概要</h2>
-              
+              <h2 className="text-2xl font-semibold text-foreground mb-6">{t("checkout.summary.title")}</h2>
+
               <div className="space-y-4 mb-6">
                 {cart.map((item) => (
-                  <div key={`${item.id}-${item.size}`} className="flex gap-4">
+                  <div key={`${item.id}-${item.size}`} className="flex gap-4 relative">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -264,12 +261,49 @@ const Checkout = () => {
                     <div className="flex-1">
                       <h3 className="font-semibold text-foreground text-sm">{item.name}</h3>
                       {item.size && (
-                        <p className="text-xs text-muted-foreground">サイズ: {item.size}</p>
+                        <p className="text-xs text-muted-foreground">{t("checkout.summary.size")}: {item.size}</p>
                       )}
-                      <p className="text-sm text-muted-foreground">数量: {item.quantity}</p>
-                      <p className="text-sm font-semibold text-foreground">
+                      <p className="text-sm font-semibold text-foreground mt-2">
                         ¥{(item.price * item.quantity * 150).toFixed(0)}
                       </p>
+                    </div>
+                    <div className="flex flex-col items-end justify-between">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-destructive hover:text-destructive"
+                        onClick={() => {
+                          removeFromCart(item.id, item.size);
+                          toast.success("Item removed from cart");
+                        }}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="h-7 w-7"
+                          onClick={() => updateQuantity(item.id, item.quantity - 1, item.size)}
+                        >
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <Input
+                          type="number"
+                          value={item.quantity}
+                          onChange={(e) => updateQuantity(item.id, parseInt(e.target.value) || 1, item.size)}
+                          className="w-14 text-center h-7"
+                          min="1"
+                        />
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="h-7 w-7"
+                          onClick={() => updateQuantity(item.id, item.quantity + 1, item.size)}
+                        >
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -277,15 +311,15 @@ const Checkout = () => {
 
               <div className="border-t border-border pt-4 space-y-2">
                 <div className="flex justify-between text-muted-foreground">
-                  <span>小計</span>
+                  <span>{t("checkout.summary.subtotal")}</span>
                   <span>¥{(subtotal * 150).toFixed(0)}</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>配送料</span>
+                  <span>{t("checkout.summary.shipping")}</span>
                   <span>¥{(shipping * 150).toFixed(0)}</span>
                 </div>
                 <div className="flex justify-between text-xl font-bold text-foreground pt-2 border-t border-border">
-                  <span>合計</span>
+                  <span>{t("checkout.summary.total")}</span>
                   <span>¥{(total * 150).toFixed(0)}</span>
                 </div>
               </div>
@@ -297,23 +331,23 @@ const Checkout = () => {
         <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>ご注文ありがとうございます！</DialogTitle>
+              <DialogTitle>{t("checkout.success.title")}</DialogTitle>
               <DialogDescription>
-                ご注文が正常に完了しました。確認メールをお送りしました。
+                {t("checkout.success.description")}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="text-center">
-                <p className="text-sm text-muted-foreground mb-2">注文番号</p>
+                <p className="text-sm text-muted-foreground mb-2">{t("checkout.success.orderNumber")}</p>
                 <p className="text-lg font-bold">{orderNumber}</p>
               </div>
               <div className="flex flex-col gap-2">
                 <Button onClick={handleDownloadReceipt} className="w-full">
                   <Download className="mr-2 h-5 w-5" />
-                  領収書をダウンロード
+                  {t("checkout.success.download")}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => {
                     setShowSuccessDialog(false);
                     clearCart();
@@ -321,7 +355,7 @@ const Checkout = () => {
                   }}
                   className="w-full"
                 >
-                  ホームに戻る
+                  {t("checkout.success.home")}
                 </Button>
               </div>
             </div>

@@ -1,0 +1,233 @@
+import { createContext, useContext, useState, ReactNode } from "react";
+
+export type Language = "en" | "ja";
+
+interface LanguageContextType {
+    language: Language;
+    setLanguage: (lang: Language) => void;
+    t: (key: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+// Translations object
+const translations: Record<Language, Record<string, string>> = {
+    en: {
+        // Navbar
+        "nav.home": "Home",
+        "nav.shop": "Shop",
+        "nav.collection": "Collection",
+        "nav.about": "About",
+
+        // Index Page
+        "index.hero.title1": "Timeless Style",
+        "index.hero.title2": "Modern Elegance",
+        "index.hero.subtitle": "Curated fashion essentials for your modern wardrobe. High-quality craftsmanship meets contemporary style.",
+        "index.hero.cta1": "View Collection",
+        "index.hero.cta2": "Learn More",
+
+        "index.featured.title": "Featured Products",
+        "index.featured.subtitle": "Carefully selected items from our latest collection",
+        "index.featured.cta": "View All Products",
+
+        "index.categories.title": "Shop by Category",
+        "index.categories.subtitle": "Explore the collection",
+        "index.categories.outerwear": "Outerwear",
+        "index.categories.dresses": "Dresses",
+        "index.categories.tops": "Tops",
+        "index.categories.accessories": "Accessories",
+
+        "index.about.title": "Our Story",
+        "index.about.text1": "Founded on the principles of timeless style and quality craftsmanship, LUXE delivers curated fashion essentials that transcend trends.",
+        "index.about.text2": "Each item in our collection is carefully selected to ensure premium materials and perfect design.",
+        "index.about.cta": "Explore Collection",
+
+        "footer.description": "Curating timeless fashion for the modern individual.",
+        "footer.quickLinks": "Quick Links",
+        "footer.contact": "Contact",
+
+        // Common
+        "common.loading": "Loading...",
+        "common.error": "Error",
+
+        // Footer
+        "footer.shop": "Shop",
+        "footer.about": "About",
+        "footer.contact": "Contact",
+
+        // Cart
+        "cart.title": "Shopping Cart",
+        "cart.empty.title": "Your cart is empty",
+        "cart.empty.subtitle": "Add some items to get started!",
+        "cart.empty.cta": "View Products",
+        "cart.size": "Size",
+        "cart.quantity": "Quantity",
+        "cart.summary.title": "Order Summary",
+        "cart.subtotal": "Subtotal",
+        "cart.shipping": "Shipping",
+        "cart.shipping.free": "Free",
+        "cart.total": "Total",
+        "cart.checkout": "Proceed to Checkout",
+        "cart.continue": "Continue Shopping",
+        "cart.freeShipping": "Free shipping on orders over $100",
+
+        // Checkout
+        "checkout.empty.title": "Your cart is empty",
+        "checkout.empty.cta": "Continue Shopping",
+        "checkout.back": "Back to Cart",
+        "checkout.title": "Payment",
+        "checkout.shipping.title": "Shipping Information",
+        "checkout.payment.title": "Payment Information",
+        "checkout.firstName": "First Name",
+        "checkout.lastName": "Last Name",
+        "checkout.email": "Email Address",
+        "checkout.address": "Address",
+        "checkout.city": "City",
+        "checkout.zipCode": "Postal Code",
+        "checkout.cardName": "Cardholder Name",
+        "checkout.cardNumber": "Card Number",
+        "checkout.expiryDate": "Expiry Date",
+        "checkout.cvv": "Security Code",
+        "checkout.required": "*",
+        "checkout.submit": "Complete Payment",
+        "checkout.success.title": "Thank You for Your Order!",
+        "checkout.success.description": "Your order has been successfully placed. We've sent you a confirmation email.",
+        "checkout.success.orderNumber": "Order Number",
+        "checkout.success.download": "Download Receipt",
+        "checkout.success.home": "Return to Home",
+        "checkout.error.title": "Missing Information",
+        "checkout.error.description": "Please fill in all required fields",
+        "checkout.summary.title": "Order Summary",
+        "checkout.summary.size": "Size",
+        "checkout.summary.subtotal": "Subtotal",
+        "checkout.summary.shipping": "Shipping",
+        "checkout.summary.total": "Total",
+    },
+    ja: {
+        // Navbar
+        "nav.home": "ホーム",
+        "nav.shop": "ショップ",
+        "nav.collection": "コレクション",
+        "nav.about": "アバウト",
+
+        // Index Page
+        "index.hero.title1": "タイムレススタイル",
+        "index.hero.title2": "モダンエレガンス",
+        "index.hero.subtitle": "モダンなワードローブのために厳選されたファッションエッセンシャル。高品質な職人技と現代的なスタイルが融合。",
+        "index.hero.cta1": "コレクションを見る",
+        "index.hero.cta2": "もっと詳しく",
+
+        "index.featured.title": "注目の商品",
+        "index.featured.subtitle": "最新コレクションから厳選されたアイテム",
+        "index.featured.cta": "すべての商品を見る",
+
+        "index.categories.title": "カテゴリー別に探す",
+        "index.categories.subtitle": "コレクションを探索",
+        "index.categories.outerwear": "アウター",
+        "index.categories.dresses": "ドレス",
+        "index.categories.tops": "トップス",
+        "index.categories.accessories": "アクセサリー",
+
+        "index.about.title": "私たちのストーリー",
+        "index.about.text1": "タイムレスなスタイルと高品質な職人技の原則に基づいて設立されたLUXEは、時代を超えて愛される厳選されたファッションエッセンシャルをお届けします。",
+        "index.about.text2": "コレクションの各アイテムは慎重に選ばれ、最高級の素材と完璧なデザインをお約束します。",
+        "index.about.cta": "コレクションを探索",
+
+        "footer.description": "モダンな個人のためのタイムレスなファッションをキュレーション。",
+        "footer.quickLinks": "クイックリンク",
+        "footer.contact": "お問い合わせ",
+
+        // Common
+        "common.loading": "読み込み中...",
+        "common.error": "エラー",
+
+        // Footer
+        "footer.shop": "ショップ",
+        "footer.about": "アバウト",
+        "footer.contact": "お問い合わせ",
+
+        // Cart
+        "cart.title": "ショッピングカート",
+        "cart.empty.title": "カートが空です",
+        "cart.empty.subtitle": "商品を追加して始めましょう！",
+        "cart.empty.cta": "商品を見る",
+        "cart.size": "サイズ",
+        "cart.quantity": "数量",
+        "cart.summary.title": "注文概要",
+        "cart.subtotal": "小計",
+        "cart.shipping": "配送料",
+        "cart.shipping.free": "無料",
+        "cart.total": "合計",
+        "cart.checkout": "レジに進む",
+        "cart.continue": "買い物を続ける",
+        "cart.freeShipping": "¥15,000以上のご注文で送料無料",
+
+        // Checkout
+        "checkout.empty.title": "カートが空です",
+        "checkout.empty.cta": "買い物を続ける",
+        "checkout.back": "カートに戻る",
+        "checkout.title": "お支払い",
+        "checkout.shipping.title": "配送先情報",
+        "checkout.payment.title": "お支払い情報",
+        "checkout.firstName": "名",
+        "checkout.lastName": "姓",
+        "checkout.email": "メールアドレス",
+        "checkout.address": "住所",
+        "checkout.city": "市区町村",
+        "checkout.zipCode": "郵便番号",
+        "checkout.cardName": "カード名義人",
+        "checkout.cardNumber": "カード番号",
+        "checkout.expiryDate": "有効期限",
+        "checkout.cvv": "セキュリティコード",
+        "checkout.required": "*",
+        "checkout.submit": "お支払いを完了",
+        "checkout.success.title": "ご注文ありがとうございます！",
+        "checkout.success.description": "ご注文が正常に完了しました。確認メールをお送りしました。",
+        "checkout.success.orderNumber": "注文番号",
+        "checkout.success.download": "領収書をダウンロード",
+        "checkout.success.home": "ホームに戻る",
+        "checkout.error.title": "情報不足",
+        "checkout.error.description": "すべての必須項目を入力してください",
+        "checkout.summary.title": "注文概要",
+        "checkout.summary.size": "サイズ",
+        "checkout.summary.subtotal": "小計",
+        "checkout.summary.shipping": "配送料",
+        "checkout.summary.total": "合計",
+    },
+};
+
+interface LanguageProviderProps {
+    children: ReactNode;
+}
+
+export function LanguageProvider({ children }: LanguageProviderProps) {
+    const [language, setLanguage] = useState<Language>(() => {
+        // Try to get saved language from localStorage, default to Japanese
+        const saved = localStorage.getItem("language") as Language;
+        return saved && (saved === "en" || saved === "ja") ? saved : "ja";
+    });
+
+    const t = (key: string): string => {
+        return translations[language][key] || key;
+    };
+
+    const handleSetLanguage = (lang: Language) => {
+        setLanguage(lang);
+        localStorage.setItem("language", lang);
+    };
+
+    return (
+        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+            {children}
+        </LanguageContext.Provider>
+    );
+}
+
+export function useLanguage() {
+    const context = useContext(LanguageContext);
+    if (context === undefined) {
+        throw new Error("useLanguage must be used within a LanguageProvider");
+    }
+    return context;
+}
+

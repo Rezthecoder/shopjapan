@@ -101,5 +101,35 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+
+  button,
+  .font-bold,
+  .font-semibold {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  p,
+  span,
+  li,
+  a {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: 'Roboto', sans-serif;
   }
 }

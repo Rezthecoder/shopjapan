@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  
+
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
-  
-  const filteredProducts = selectedCategory === "All" 
-    ? products 
+
+  const filteredProducts = selectedCategory === "All"
+    ? products
     : products.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-12">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">コレクション</h1>

@@ -1,4 +1,5 @@
 import { CartItem } from "@/contexts/CartContext";
+import jsPDF from "jspdf";
 
 export interface OrderData {
   items: CartItem[];
@@ -16,169 +17,104 @@ export interface OrderData {
   };
 }
 
-export const generateReceipt = (orderData: OrderData) => {
-  const html = `
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-      <meta charset="UTF-8">
-      <title>領収書 - ${orderData.orderNumber}</title>
-      <style>
-        body {
-          font-family: 'Helvetica', 'Arial', sans-serif;
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 40px;
-          color: #333;
-        }
-        .header {
-          text-align: center;
-          margin-bottom: 40px;
-          border-bottom: 2px solid #000;
-          padding-bottom: 20px;
-        }
-        .header h1 {
-          margin: 0;
-          font-size: 32px;
-        }
-        .order-info {
-          margin-bottom: 30px;
-          display: flex;
-          justify-content: space-between;
-        }
-        .customer-info {
-          margin-bottom: 30px;
-        }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-bottom: 30px;
-        }
-        th {
-          background-color: #f5f5f5;
-          padding: 12px;
-          text-align: left;
-          border-bottom: 2px solid #ddd;
-        }
-        td {
-          padding: 12px;
-          border-bottom: 1px solid #ddd;
-        }
-        .totals {
-          text-align: right;
-          margin-top: 20px;
-        }
-        .totals-row {
-          display: flex;
-          justify-content: flex-end;
-          margin-bottom: 8px;
-        }
-        .totals-label {
-          width: 150px;
-          text-align: right;
-          padding-right: 20px;
-        }
-        .totals-value {
-          width: 120px;
-          text-align: right;
-        }
-        .total-row {
-          font-size: 18px;
-          font-weight: bold;
-          border-top: 2px solid #000;
-          padding-top: 10px;
-          margin-top: 10px;
-        }
-        .footer {
-          margin-top: 50px;
-          text-align: center;
-          color: #666;
-          font-size: 12px;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="header">
-        <h1>LUXE</h1>
-        <p>領収書</p>
-      </div>
-      
-      <div class="order-info">
-        <div>
-          <strong>注文番号:</strong> ${orderData.orderNumber}<br>
-          <strong>日付:</strong> ${orderData.date}
-        </div>
-      </div>
-      
-      <div class="customer-info">
-        <h3>お客様情報</h3>
-        <p>
-          ${orderData.customerInfo.name}<br>
-          ${orderData.customerInfo.email}<br>
-          ${orderData.customerInfo.address}<br>
-          ${orderData.customerInfo.city} ${orderData.customerInfo.zipCode}
-        </p>
-      </div>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>サイズ</th>
-            <th>数量</th>
-            <th>単価</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${orderData.items.map(item => `
-            <tr>
-              <td>${item.name}</td>
-              <td>${item.size || '-'}</td>
-              <td>${item.quantity}</td>
-              <td>¥${(item.price * 150).toFixed(0)}</td>
-              <td>¥${(item.price * item.quantity * 150).toFixed(0)}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-      
-      <div class="totals">
-        <div class="totals-row">
-          <div class="totals-label">小計:</div>
-          <div class="totals-value">¥${(orderData.subtotal * 150).toFixed(0)}</div>
-        </div>
-        <div class="totals-row">
-          <div class="totals-label">配送料:</div>
-          <div class="totals-value">¥${(orderData.shipping * 150).toFixed(0)}</div>
-        </div>
-        <div class="totals-row total-row">
-          <div class="totals-label">合計:</div>
-          <div class="totals-value">¥${(orderData.total * 150).toFixed(0)}</div>
-        </div>
-      </div>
-      
-      <div class="footer">
-        <p>LUXE - タイムレスなファッション</p>
-        <p>hello@luxe.com | +1 (555) 123-4567</p>
-        <p>ご購入ありがとうございました</p>
-      </div>
-    </body>
-    </html>
-  `;
-
-  return html;
-};
-
 export const downloadReceipt = (orderData: OrderData) => {
-  const html = generateReceipt(orderData);
-  const blob = new Blob([html], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `receipt-${orderData.orderNumber}.html`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 20;
+  let y = margin;
+
+  const setFont = (size = 12, style: "normal" | "bold" | "italic" = "normal") => {
+    doc.setFontSize(size);
+    doc.setFont("helvetica", style as any);
+    doc.setTextColor(0, 0, 0);
+  };
+
+  const addRow = (cols: { text: string; x: number; align?: "left" | "right" }[], yPos: number) => {
+    cols.forEach((c) => doc.text(c.text, c.x, yPos, { align: c.align || "left" }));
+  };
+
+  // Header (simple, no color)
+  setFont(18, "bold");
+  doc.text("LUXE", margin, y);
+  setFont(16, "bold");
+  doc.text("Receipt", pageWidth - margin, y, { align: "right" });
+  y += 8;
+  setFont(10);
+  doc.text(`Order: ${orderData.orderNumber}`, margin, y);
+  doc.text(`Date: ${orderData.date}`, pageWidth - margin, y, { align: "right" });
+  y += 6;
+  doc.line(margin, y, pageWidth - margin, y);
+
+  // Customer info
+  y += 8;
+  setFont(12, "bold");
+  doc.text("Customer Information", margin, y);
+  y += 6;
+  setFont(11);
+  doc.text(orderData.customerInfo.name, margin, y); y += 5;
+  doc.text(orderData.customerInfo.email, margin, y); y += 5;
+  doc.text(orderData.customerInfo.address, margin, y); y += 5;
+  doc.text(`${orderData.customerInfo.city} ${orderData.customerInfo.zipCode}`, margin, y); y += 8;
+
+  // Items table header
+  setFont(12, "bold");
+  addRow([
+    { text: "Product", x: margin },
+    { text: "Size", x: margin + 90 },
+    { text: "Qty", x: margin + 120 },
+    { text: "Price", x: margin + 145 },
+    { text: "Total", x: pageWidth - margin, align: "right" },
+  ], y);
+  y += 4;
+  doc.line(margin, y, pageWidth - margin, y);
+  y += 6;
+
+  // Items
+  setFont(11);
+  orderData.items.forEach((item) => {
+    // page break if needed
+    if (y > doc.internal.pageSize.getHeight() - 30) {
+      doc.addPage();
+      y = margin;
+    }
+    const name = item.name.length > 40 ? `${item.name.slice(0, 40)}…` : item.name;
+    addRow([
+      { text: name, x: margin },
+      { text: item.size || "-", x: margin + 90 },
+      { text: String(item.quantity), x: margin + 120 },
+      { text: `¥${(item.price * 150).toFixed(0)}`, x: margin + 145 },
+      { text: `¥${(item.price * item.quantity * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+    ], y);
+    y += 6;
+  });
+
+  // Totals
+  y += 4;
+  doc.line(margin, y, pageWidth - margin, y);
+  y += 8;
+  setFont(12);
+  addRow([
+    { text: "Subtotal", x: margin + 120 },
+    { text: `¥${(orderData.subtotal * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+  ], y);
+  y += 6;
+  addRow([
+    { text: "Shipping", x: margin + 120 },
+    { text: `¥${(orderData.shipping * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+  ], y);
+  y += 6;
+  setFont(13, "bold");
+  addRow([
+    { text: "Total", x: margin + 120 },
+    { text: `¥${(orderData.total * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+  ], y);
+
+  // Footer
+  y = doc.internal.pageSize.getHeight() - 15;
+  setFont(9);
+  doc.line(margin, y - 5, pageWidth - margin, y - 5);
+  doc.text("Thank you for your purchase!", margin, y);
+  doc.text("hello@luxe.com | +1 (555) 123-4567", pageWidth - margin, y, { align: "right" });
+
+  doc.save(`receipt-${orderData.orderNumber}.pdf`);
 };

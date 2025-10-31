@@ -4,32 +4,35 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const { totalItems } = useCart();
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-foreground">
+          <Link to="/" className="text-3xl font-bold text-foreground">
             LUXE
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
-              ホーム
+              {t("nav.home")}
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              ショップ
+              {t("nav.shop")}
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              コレクション
+              {t("nav.collection")}
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              アバウト
+              {t("nav.about")}
             </Link>
           </div>
 
@@ -37,6 +40,7 @@ const Navbar = () => {
             <Button variant="ghost" size="icon" className="hidden md:flex">
               <Search className="h-5 w-5" />
             </Button>
+            <LanguageToggle />
             <ThemeToggle />
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
@@ -48,9 +52,9 @@ const Navbar = () => {
                 )}
               </Button>
             </Link>
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -62,33 +66,33 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              ホーム
+              {t("nav.home")}
             </Link>
-            <Link 
-              to="/products" 
+            <Link
+              to="/products"
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              ショップ
+              {t("nav.shop")}
             </Link>
-            <Link 
-              to="/products" 
+            <Link
+              to="/products"
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              コレクション
+              {t("nav.collection")}
             </Link>
-            <Link 
-              to="/products" 
+            <Link
+              to="/products"
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              アバウト
+              {t("nav.about")}
             </Link>
           </div>
         )}
