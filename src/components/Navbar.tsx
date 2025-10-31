@@ -31,7 +31,7 @@ const Navbar = () => {
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
               {t("nav.collection")}
             </Link>
-            <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
               {t("nav.about")}
             </Link>
           </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
               {t("nav.collection")}
             </Link>
             <Link
-              to="/products"
+              to="/about"
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
