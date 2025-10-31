@@ -44,7 +44,6 @@ const translations: Record<Language, Record<string, string>> = {
 
         "footer.description": "Curating timeless fashion for the modern individual.",
         "footer.quickLinks": "Quick Links",
-        "footer.contact": "Contact",
 
         // Common
         "common.loading": "Loading...",
@@ -135,7 +134,6 @@ const translations: Record<Language, Record<string, string>> = {
 
         "footer.description": "モダンな個人のためのタイムレスなファッションをキュレーション。",
         "footer.quickLinks": "クイックリンク",
-        "footer.contact": "お問い合わせ",
 
         // Common
         "common.loading": "読み込み中...",

@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { CreditCard, ArrowLeft, Download, Trash2, Plus, Minus } from "lucide-react";
 import { downloadReceipt } from "@/utils/receiptGenerator";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { z } from "zod";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -62,11 +63,26 @@ const Checkout = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!formData.firstName || !formData.lastName || !formData.email ||
-      !formData.address || !formData.city || !formData.zipCode ||
-      !formData.cardNumber || !formData.cardName || !formData.expiryDate || !formData.cvv) {
-      toast.error(t("checkout.error.title") + ": " + t("checkout.error.description"));
+    // Validation schema
+    const checkoutSchema = z.object({
+      firstName: z.string().trim().min(1, "名前を入力してください").max(50, "名前は50文字以内で入力してください"),
+      lastName: z.string().trim().min(1, "姓を入力してください").max(50, "姓は50文字以内で入力してください"),
+      email: z.string().trim().email("有効なメールアドレスを入力してください").max(255, "メールアドレスは255文字以内で入力してください"),
+      address: z.string().trim().min(1, "住所を入力してください").max(200, "住所は200文字以内で入力してください"),
+      city: z.string().trim().min(1, "市区町村を入力してください").max(100, "市区町村は100文字以内で入力してください"),
+      zipCode: z.string().trim().regex(/^\d{3}-?\d{4}$/, "有効な郵便番号を入力してください（例：123-4567）"),
+      cardName: z.string().trim().min(1, "カード名義人を入力してください").max(100, "カード名義人は100文字以内で入力してください"),
+      cardNumber: z.string().trim().regex(/^\d{13,19}$/, "有効なカード番号を入力してください（13-19桁の数字）"),
+      expiryDate: z.string().trim().regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "有効期限をMM/YY形式で入力してください"),
+      cvv: z.string().trim().regex(/^\d{3,4}$/, "セキュリティコードは3-4桁の数字で入力してください"),
+    });
+
+    // Validate form data
+    const validation = checkoutSchema.safeParse(formData);
+
+    if (!validation.success) {
+      const firstError = validation.error.errors[0];
+      toast.error(firstError.message);
       return;
     }
 
