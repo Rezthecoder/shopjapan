@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const featuredProducts = products.slice(0, 4);
 
   return (
@@ -28,7 +28,9 @@ const Index = () => {
 
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className={`font-bold text-foreground mb-6 leading-tight ${
+              language === "ja" ? "text-6xl md:text-8xl" : "text-5xl md:text-7xl"
+            }`}>
               {t("index.hero.title1")}
               <span className="block text-secondary">{t("index.hero.title2")}</span>
             </h1>
