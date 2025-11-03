@@ -149,39 +149,37 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             {/* Brand Column */}
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white">Luxe Boutique</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">{t("footer.brand")}</h3>
               <p className="text-white/70 leading-relaxed">
-                Elevating style with timeless elegance and sophisticated designs.
+                {t("footer.tagline")}
               </p>
             </div>
 
             {/* Shop Column */}
             <div>
-              <h4 className="font-semibold mb-4 text-white text-lg">Shop</h4>
+              <h4 className="font-semibold mb-4 text-white text-lg">{t("footer.shop.heading")}</h4>
               <ul className="space-y-3 text-white/70">
-                <li><Link to="/products" className="hover:text-white transition-colors">Clothing</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">Jewelry</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">Collections</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">New Arrivals</Link></li>
+                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.shop.clothing")}</Link></li>
+                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.shop.jewelry")}</Link></li>
+                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.shop.collections")}</Link></li>
+                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.shop.newArrivals")}</Link></li>
               </ul>
             </div>
 
             {/* Customer Care Column */}
             <div>
-              <h4 className="font-semibold mb-4 text-white text-lg">Customer Care</h4>
+              <h4 className="font-semibold mb-4 text-white text-lg">{t("footer.customerCare.heading")}</h4>
               <ul className="space-y-3 text-white/70">
-                <li><Link to="/about" className="hover:text-white transition-colors">Contact Us</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">Shipping Info</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">Returns</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">FAQ</Link></li>
+                <li><Link to="/about" className="hover:text-white transition-colors">{t("footer.customerCare.contactUs")}</Link></li>
+                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.customerCare.faq")}</Link></li>
               </ul>
             </div>
 
             {/* Connect Column */}
             <div>
-              <h4 className="font-semibold mb-4 text-white text-lg">Connect</h4>
+              <h4 className="font-semibold mb-4 text-white text-lg">{t("footer.connect.heading")}</h4>
               <p className="text-white/70 mb-4 italic">
-                Follow us for style inspiration and exclusive offers
+                {t("footer.connect.tagline")}
               </p>
               <div className="flex gap-4">
                 <a href="#" className="text-white/70 hover:text-white transition-colors">
@@ -206,14 +204,14 @@ const Index = () => {
           {/* Bottom Section */}
           <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/60 text-sm">
-              © 2025 Luxe Boutique. All rights reserved.
+              {t("footer.copyright")}
             </p>
             <div className="flex gap-6 text-sm">
               <Link to="/products" className="text-white/60 hover:text-white transition-colors">
-                Privacy Policy
+                {t("footer.privacy")}
               </Link>
               <Link to="/products" className="text-white/60 hover:text-white transition-colors">
-                Terms of Service
+                {t("footer.terms")}
               </Link>
             </div>
           </div>
