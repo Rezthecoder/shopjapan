@@ -280,4 +280,54 @@ export const products: Product[] = [
     features: ["Set of 4 bangles", "Mixed metals", "Slip-on design", "Scratch resistant"],
     sizes: ["One Size"]
   },
+  {
+    id: 29,
+    name: "Elegant Evening Gown",
+    price: 385.00,
+    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Stunning floor-length evening gown with a sophisticated silhouette. Perfect for formal events.",
+    features: ["Luxe fabric", "Side slit", "Hidden zipper", "Dry clean only"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 30,
+    name: "Tailored Blazer Dress",
+    price: 245.00,
+    image: "https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Sophisticated blazer dress with structured shoulders. Modern and chic for professional settings.",
+    features: ["Double-breasted", "Tailored fit", "Belt included", "Machine washable"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 31,
+    name: "Satin Slip Midi Dress",
+    price: 195.00,
+    image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Luxurious satin slip dress with elegant drape. Versatile for day to night styling.",
+    features: ["Satin finish", "Adjustable straps", "Cowl neckline", "Hand wash"],
+    sizes: ["XS", "S", "M", "L"]
+  },
+  {
+    id: 32,
+    name: "Bohemian Maxi Dress",
+    price: 168.00,
+    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Flowing bohemian maxi dress with intricate detailing. Perfect for summer occasions.",
+    features: ["Flowy fabric", "Embroidered details", "Elastic waist", "Machine washable"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 33,
+    name: "Little Black Cocktail Dress",
+    price: 225.00,
+    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&auto=format&fit=crop",
+    category: "Dresses",
+    description: "Timeless little black dress with modern cut. An essential piece for every wardrobe.",
+    features: ["Classic silhouette", "Hidden zipper", "Lined", "Dry clean only"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
 ];
