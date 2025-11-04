@@ -38,7 +38,7 @@ const translations: Record<Language, Record<string, string>> = {
         "index.categories.accessories": "Accessories",
 
         "index.about.title": "Our Story",
-        "index.about.text1": "Founded on the principles of timeless style and quality craftsmanship, LUXE delivers curated fashion essentials that transcend trends.",
+        "index.about.text1": "Founded on the principles of timeless style and quality craftsmanship, KARU delivers curated fashion essentials that transcend trends.",
         "index.about.text2": "Each item in our collection is carefully selected to ensure premium materials and perfect design.",
         "index.about.cta": "Explore Collection",
 
@@ -53,7 +53,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.shop": "Shop",
         "footer.about": "About",
         "footer.contact": "Contact",
-        "footer.brand": "LUXE",
+        "footer.brand": "KARU",
         "footer.tagline": "Elevating style with timeless elegance and sophisticated designs.",
         "footer.shop.heading": "Shop",
         "footer.shop.clothing": "Clothing",
@@ -65,7 +65,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.customerCare.faq": "FAQ",
         "footer.connect.heading": "Connect",
         "footer.connect.tagline": "Follow us for style inspiration and exclusive offers",
-        "footer.copyright": "© 2025 Luxe Boutique. All rights reserved.",
+        "footer.copyright": "© 2025 KARU. All rights reserved.",
         "footer.privacy": "Privacy Policy",
         "footer.terms": "Terms of Service",
 
@@ -133,10 +133,10 @@ const translations: Record<Language, Record<string, string>> = {
         "checkout.summary.total": "Total",
 
         // About Page
-        "about.hero.title": "About LUXE",
+        "about.hero.title": "About KARU",
         "about.hero.subtitle": "We deliver refined style to your daily life through the highest quality fashion items.",
         "about.story.title": "Our Story",
-        "about.story.p1": "LUXE is a premium fashion brand that fuses timeless beauty with modern sophistication.",
+        "about.story.p1": "KARU is a premium fashion brand that fuses timeless beauty with modern sophistication.",
         "about.story.p2": "Through carefully selected materials and craftsmanship, each item enhances your individuality and gives you confidence.",
         "about.story.p3": "Our mission is to enrich people's lives through fashion and color special moments.",
         "about.contact.title": "Contact Us",
@@ -173,7 +173,7 @@ const translations: Record<Language, Record<string, string>> = {
         "index.categories.accessories": "アクセサリー",
 
         "index.about.title": "私たちのストーリー",
-        "index.about.text1": "タイムレスなスタイルと高品質な職人技の原則に基づいて設立されたLUXEは、時代を超えて愛される厳選されたファッションエッセンシャルをお届けします。",
+        "index.about.text1": "タイムレスなスタイルと高品質な職人技の原則に基づいて設立されたKARUは、時代を超えて愛される厳選されたファッションエッセンシャルをお届けします。",
         "index.about.text2": "コレクションの各アイテムは慎重に選ばれ、最高級の素材と完璧なデザインをお約束します。",
         "index.about.cta": "コレクションを探索",
 
@@ -188,7 +188,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.shop": "ショップ",
         "footer.about": "アバウト",
         "footer.contact": "お問い合わせ",
-        "footer.brand": "Luxe Boutique",
+        "footer.brand": "KARU",
         "footer.tagline": "時代を超えたエレガンスと洗練されたデザインでスタイルを格上げ。",
         "footer.shop.heading": "ショップ",
         "footer.shop.clothing": "衣類",
@@ -200,7 +200,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.customerCare.faq": "よくある質問",
         "footer.connect.heading": "つながる",
         "footer.connect.tagline": "スタイルのインスピレーションと限定オファーをフォロー",
-        "footer.copyright": "© 2025 Luxe Boutique. All rights reserved.",
+        "footer.copyright": "© 2025 KARU. All rights reserved.",
         "footer.privacy": "プライバシーポリシー",
         "footer.terms": "利用規約",
 
@@ -268,10 +268,10 @@ const translations: Record<Language, Record<string, string>> = {
         "checkout.summary.total": "合計",
 
         // About Page
-        "about.hero.title": "LUXE について",
+        "about.hero.title": "KARU について",
         "about.hero.subtitle": "私たちは、最高品質のファッションアイテムを通じて、お客様の日常に洗練されたスタイルをお届けします。",
         "about.story.title": "私たちのストーリー",
-        "about.story.p1": "LUXEは、時代を超えた美しさと現代的な洗練を融合させたプレミアムファッションブランドです。",
+        "about.story.p1": "KARUは、時代を超えた美しさと現代的な洗練を融合させたプレミアムファッションブランドです。",
         "about.story.p2": "厳選された素材と職人技により、一つ一つのアイテムがお客様の個性を引き立て、自信を与えます。",
         "about.story.p3": "私たちは、ファッションを通じて人々の生活を豊かにし、特別な瞬間を彩ることを使命としています。",
         "about.contact.title": "お問い合わせ",
