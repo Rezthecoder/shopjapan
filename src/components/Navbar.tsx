@@ -16,6 +16,26 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  /**
+   * Handle Home link click
+   * Scrolls to top if already on homepage, otherwise navigates to homepage
+   */
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsMenuOpen(false);
+
+    if (location.pathname === '/') {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Navigate to home page
+      navigate('/');
+      // Scroll to top after navigation
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   const handleFaqClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsMenuOpen(false);
@@ -62,11 +82,12 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link
+              to="/"
+              onClick={handleHomeClick}
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
               {t("nav.home")}
-            </Link>
-            <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
-              {t("nav.shop")}
             </Link>
             <Link to="/products" className="text-sm font-medium hover:text-primary transition-colors">
               {t("nav.collection")}
@@ -115,17 +136,10 @@ const Navbar = () => {
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
             <Link
               to="/"
+              onClick={handleHomeClick}
               className="block text-sm font-medium hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
             >
               {t("nav.home")}
-            </Link>
-            <Link
-              to="/products"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("nav.shop")}
             </Link>
             <Link
               to="/products"
