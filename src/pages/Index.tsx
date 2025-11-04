@@ -2,14 +2,35 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { products } from "@/data/products";
-import heroImage from "@/assets/hero-fashion.jpg";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Using beautiful vibrant jewelry image for hero section
+const heroImage = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1920&auto=format&fit=crop&q=90";
+
 const Index = () => {
   const { t, language } = useLanguage();
-  const featuredProducts = products.slice(0, 4);
+
+  // Prioritize jewelry items first to encourage purchases
+  const jewelryProducts = products.filter(p => p.category === "Jewelry");
+  const otherProducts = products.filter(p => p.category !== "Jewelry");
+  // Show up to 4 jewelry items, fill remaining slots with other products if needed
+  const featuredProducts = jewelryProducts.length >= 4
+    ? jewelryProducts.slice(0, 4)
+    : [...jewelryProducts, ...otherProducts.slice(0, 4 - jewelryProducts.length)];
+
+  const handleFaqClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const faqSection = document.getElementById('faq');
+    if (faqSection) {
+      faqSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-950 dark:via-pink-950 dark:to-blue-950">
@@ -20,32 +41,32 @@ const Index = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Hero"
-            className="w-full h-full object-cover"
+            alt="Luxury Jewelry Collection"
+            className="w-full h-full object-cover brightness-110 saturate-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20" />
         </div>
 
-        <div className="relative container mx-auto px-4 h-full flex items-center">
+        <div className="relative container mx-auto px-4 h-full flex items-center z-10">
           <div className="max-w-2xl">
-            <h1 className={`font-bold text-foreground mb-6 leading-tight ${
-              language === "ja" ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl"
-            }`}>
+            <h1 className={`font-bold text-white mb-6 leading-tight drop-shadow-lg ${language === "ja" ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl"
+              }`}>
               {t("index.hero.title1")}
-              <span className="block text-secondary">{t("index.hero.title2")}</span>
+              <span className="block text-yellow-200">{t("index.hero.title2")}</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl drop-shadow-md">
               {t("index.hero.subtitle")}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/products">
-                <Button variant="secondary" size="lg" className="group">
+                <Button variant="secondary" size="lg" className="group bg-yellow-400 hover:bg-yellow-500 text-black font-semibold shadow-xl hover:shadow-2xl transition-all">
                   {t("index.hero.cta1")}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link to="/products">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-2 border-white/80 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
                   {t("index.hero.cta2")}
                 </Button>
               </Link>
@@ -132,11 +153,11 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
-            <div className="aspect-square rounded-lg overflow-hidden">
+            <div className="aspect-square rounded-lg overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop"
-                alt="About LUXE"
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop&q=90"
+                alt="Stylish Female Dress Collection"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
@@ -144,22 +165,37 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-r from-violet-100 to-purple-100 dark:from-violet-900 dark:to-purple-900">
+      <section id="faq" className="py-20 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("faq.title")}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("index.faq.title")}</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              {t("index.faq.subtitle")}
+            </p>
           </div>
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <div key={num} className="bg-card/50 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <h3 className="font-bold text-lg text-foreground mb-3">
-                  {t(`faq.q${num}`)}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t(`faq.a${num}`)}
-                </p>
-              </div>
-            ))}
+
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {[
+                { q: "index.faq.q1", a: "index.faq.a1" },
+                { q: "index.faq.q2", a: "index.faq.a2" },
+                { q: "index.faq.q3", a: "index.faq.a3" },
+                { q: "index.faq.q4", a: "index.faq.a4" },
+              ].map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-card rounded-lg border border-border overflow-hidden"
+                >
+                  <AccordionTrigger className="text-xl font-semibold text-foreground hover:no-underline px-6 py-4">
+                    {t(faq.q)}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-4">
+                    {t(faq.a)}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
@@ -192,7 +228,15 @@ const Index = () => {
               <h4 className="font-semibold mb-4 text-white text-lg">{t("footer.customerCare.heading")}</h4>
               <ul className="space-y-3 text-white/70">
                 <li><Link to="/about" className="hover:text-white transition-colors">{t("footer.customerCare.contactUs")}</Link></li>
-                <li><Link to="/products" className="hover:text-white transition-colors">{t("footer.customerCare.faq")}</Link></li>
+                <li>
+                  <a
+                    href="#faq"
+                    onClick={handleFaqClick}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    {t("footer.customerCare.faq")}
+                  </a>
+                </li>
               </ul>
             </div>
 

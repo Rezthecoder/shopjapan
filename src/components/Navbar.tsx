@@ -1,6 +1,6 @@
 import { ShoppingCart, Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -11,13 +11,37 @@ const Navbar = () => {
   const { totalItems } = useCart();
   const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleFaqClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    if (location.pathname === '/') {
+      // If already on home page, scroll to FAQ
+      const faqSection = document.getElementById('faq');
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to home page first, then scroll after navigation
+      navigate('/');
+      setTimeout(() => {
+        const faqSection = document.getElementById('faq');
+        if (faqSection) {
+          faqSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-3xl font-bold text-foreground">
-            LUXE
+            KARU
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,6 +58,13 @@ const Navbar = () => {
             <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
               {t("nav.about")}
             </Link>
+            <a
+              href="#faq"
+              onClick={handleFaqClick}
+              className="text-sm font-medium hover:text-primary transition-colors cursor-pointer"
+            >
+              {t("nav.faq")}
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -94,6 +125,13 @@ const Navbar = () => {
             >
               {t("nav.about")}
             </Link>
+            <a
+              href="#faq"
+              onClick={handleFaqClick}
+              className="block text-sm font-medium hover:text-primary transition-colors cursor-pointer"
+            >
+              {t("nav.faq")}
+            </a>
           </div>
         )}
       </div>

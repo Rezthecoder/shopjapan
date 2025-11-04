@@ -18,6 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
         "nav.shop": "Shop",
         "nav.collection": "Collection",
         "nav.about": "About",
+        "nav.faq": "FAQ",
 
         // Index Page
         "index.hero.title1": "Timeless Style",
@@ -41,6 +42,17 @@ const translations: Record<Language, Record<string, string>> = {
         "index.about.text1": "Founded on the principles of timeless style and quality craftsmanship, KARU delivers curated fashion essentials that transcend trends.",
         "index.about.text2": "Each item in our collection is carefully selected to ensure premium materials and perfect design.",
         "index.about.cta": "Explore Collection",
+
+        "index.faq.title": "Frequently Asked Questions",
+        "index.faq.subtitle": "Find answers to common questions about our products and services",
+        "index.faq.q1": "What is your return policy?",
+        "index.faq.a1": "We offer a 30-day return policy for unworn items in their original packaging. Please contact our customer service team for assistance with returns.",
+        "index.faq.q2": "Do you ship internationally?",
+        "index.faq.a2": "Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by location. Please check our shipping page for more details.",
+        "index.faq.q3": "How can I track my order?",
+        "index.faq.a3": "Once your order ships, you'll receive a confirmation email with a tracking number. You can use this number to track your package on our website or the carrier's website.",
+        "index.faq.q4": "What payment methods do you accept?",
+        "index.faq.a4": "We accept all major credit cards, PayPal, and other secure payment methods. All transactions are encrypted and secure.",
 
         "footer.description": "Curating timeless fashion for the modern individual.",
         "footer.quickLinks": "Quick Links",
@@ -153,6 +165,7 @@ const translations: Record<Language, Record<string, string>> = {
         "nav.shop": "ショップ",
         "nav.collection": "コレクション",
         "nav.about": "アバウト",
+        "nav.faq": "よくある質問",
 
         // Index Page
         "index.hero.title1": "タイムレススタイル",
@@ -176,6 +189,17 @@ const translations: Record<Language, Record<string, string>> = {
         "index.about.text1": "タイムレスなスタイルと高品質な職人技の原則に基づいて設立されたKARUは、時代を超えて愛される厳選されたファッションエッセンシャルをお届けします。",
         "index.about.text2": "コレクションの各アイテムは慎重に選ばれ、最高級の素材と完璧なデザインをお約束します。",
         "index.about.cta": "コレクションを探索",
+
+        "index.faq.title": "よくある質問",
+        "index.faq.subtitle": "商品やサービスに関するよくある質問への回答をご覧ください",
+        "index.faq.q1": "返品ポリシーについて教えてください",
+        "index.faq.a1": "未使用で元のパッケージに入った商品については、30日間の返品ポリシーを提供しています。返品に関するご質問は、カスタマーサービスチームまでお問い合わせください。",
+        "index.faq.q2": "国際配送は可能ですか？",
+        "index.faq.a2": "はい、世界中のほとんどの国に配送しています。配送料と配達時間は地域によって異なります。詳細については、配送ページをご確認ください。",
+        "index.faq.q3": "注文の追跡はできますか？",
+        "index.faq.a3": "注文が発送されると、追跡番号付きの確認メールが届きます。この番号を使用して、当社のウェブサイトまたは配送業者のウェブサイトで荷物を追跡できます。",
+        "index.faq.q4": "どのようなお支払い方法を受け付けていますか？",
+        "index.faq.a4": "主要なクレジットカード、PayPal、その他の安全な決済方法を受け付けています。すべての取引は暗号化され、安全です。",
 
         "footer.description": "モダンな個人のためのタイムレスなファッションをキュレーション。",
         "footer.quickLinks": "クイックリンク",
