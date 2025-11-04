@@ -133,3 +133,16 @@ All colors MUST be HSL.
     font-family: 'Roboto', sans-serif;
   }
 }
+
+/* Hide Lovable branding/editor button */
+[data-lovable],
+[data-lovable-button],
+button[aria-label*="Lovable"],
+button[aria-label*="lovable"],
+a[href*="lovable"][aria-label*="Edit"],
+iframe[src*="lovable"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
