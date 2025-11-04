@@ -53,7 +53,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.shop": "Shop",
         "footer.about": "About",
         "footer.contact": "Contact",
-        "footer.brand": "Luxe",
+        "footer.brand": "LUXE",
         "footer.tagline": "Elevating style with timeless elegance and sophisticated designs.",
         "footer.shop.heading": "Shop",
         "footer.shop.clothing": "Clothing",
