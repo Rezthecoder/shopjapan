@@ -54,7 +54,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-4xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent hover:from-yellow-300 hover:via-yellow-200 hover:to-yellow-400 transition-all duration-300 tracking-tight drop-shadow-lg" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, textShadow: '0 0 20px rgba(234, 179, 8, 0.5)' }}>
+          <Link to="/" className="text-4xl font-black bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600 dark:from-yellow-400 dark:via-yellow-300 dark:to-yellow-500 bg-clip-text text-transparent hover:from-amber-700 hover:via-amber-600 hover:to-yellow-700 dark:hover:from-yellow-300 dark:hover:via-yellow-200 dark:hover:to-yellow-400 transition-all duration-300 tracking-tight drop-shadow-lg" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>
             KARU
           </Link>
 
