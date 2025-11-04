@@ -1,4 +1,5 @@
 import { CartItem } from "@/contexts/CartContext";
+import { formatPriceWithoutSymbol } from "@/utils/priceFormatter";
 import jsPDF from "jspdf";
 
 export interface OrderData {
@@ -82,8 +83,8 @@ export const downloadReceipt = (orderData: OrderData) => {
       { text: name, x: margin },
       { text: item.size || "-", x: margin + 90 },
       { text: String(item.quantity), x: margin + 120 },
-      { text: `¥${(item.price * 150).toFixed(0)}`, x: margin + 145 },
-      { text: `¥${(item.price * item.quantity * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+      { text: `¥${formatPriceWithoutSymbol(item.price)}`, x: margin + 145 },
+      { text: `¥${formatPriceWithoutSymbol(item.price * item.quantity)}`, x: pageWidth - margin, align: "right" },
     ], y);
     y += 6;
   });
@@ -95,18 +96,18 @@ export const downloadReceipt = (orderData: OrderData) => {
   setFont(12);
   addRow([
     { text: "Subtotal", x: margin + 120 },
-    { text: `¥${(orderData.subtotal * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+    { text: `¥${formatPriceWithoutSymbol(orderData.subtotal)}`, x: pageWidth - margin, align: "right" },
   ], y);
   y += 6;
   addRow([
     { text: "Shipping", x: margin + 120 },
-    { text: `¥${(orderData.shipping * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+    { text: `¥${formatPriceWithoutSymbol(orderData.shipping)}`, x: pageWidth - margin, align: "right" },
   ], y);
   y += 6;
   setFont(13, "bold");
   addRow([
     { text: "Total", x: margin + 120 },
-    { text: `¥${(orderData.total * 150).toFixed(0)}`, x: pageWidth - margin, align: "right" },
+    { text: `¥${formatPriceWithoutSymbol(orderData.total)}`, x: pageWidth - margin, align: "right" },
   ], y);
 
   // Footer

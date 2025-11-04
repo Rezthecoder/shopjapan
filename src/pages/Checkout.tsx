@@ -9,6 +9,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "sonner";
 import { CreditCard, ArrowLeft, Download, Trash2, Plus, Minus } from "lucide-react";
 import { downloadReceipt } from "@/utils/receiptGenerator";
+import { saveOrder } from "@/utils/orderStorage";
+import { saveUserOrder } from "@/utils/userOrderStorage";
+import { formatPrice } from "@/utils/priceFormatter";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { z } from "zod";
 
@@ -89,6 +92,27 @@ const Checkout = () => {
     // Generate order number
     const newOrderNumber = `ORD-${Date.now()}`;
     setOrderNumber(newOrderNumber);
+
+    // Save order to storage for admin view
+    const order = {
+      orderNumber: newOrderNumber,
+      date: new Date().toISOString(),
+      customerInfo: {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        address: formData.address,
+        city: formData.city,
+        zipCode: formData.zipCode
+      },
+      items: cart,
+      subtotal,
+      shipping,
+      total,
+      status: 'pending' as const
+    };
+    saveOrder(order);
+    // Save order for user to view later
+    saveUserOrder(order, formData.email, `${formData.firstName} ${formData.lastName}`);
 
     // Show success dialog
     setShowSuccessDialog(true);
@@ -256,7 +280,7 @@ const Checkout = () => {
 
               <Button type="submit" size="lg" className="w-full">
                 <CreditCard className="mr-2 h-5 w-5" />
-                ¥{(total * 150).toFixed(0)} - {t("checkout.submit")}
+                {formatPrice(total)} - {t("checkout.submit")}
               </Button>
             </form>
           </div>
@@ -280,7 +304,7 @@ const Checkout = () => {
                         <p className="text-xs text-muted-foreground">{t("checkout.summary.size")}: {item.size}</p>
                       )}
                       <p className="text-sm font-semibold text-foreground mt-2">
-                        ¥{(item.price * item.quantity * 150).toFixed(0)}
+                        {formatPrice(item.price * item.quantity)}
                       </p>
                     </div>
                     <div className="flex flex-col items-end justify-between">
@@ -328,15 +352,15 @@ const Checkout = () => {
               <div className="border-t border-border pt-4 space-y-2">
                 <div className="flex justify-between text-muted-foreground">
                   <span>{t("checkout.summary.subtotal")}</span>
-                  <span>¥{(subtotal * 150).toFixed(0)}</span>
+                  <span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>{t("checkout.summary.shipping")}</span>
-                  <span>¥{(shipping * 150).toFixed(0)}</span>
+                  <span>{formatPrice(shipping)}</span>
                 </div>
                 <div className="flex justify-between text-xl font-bold text-foreground pt-2 border-t border-border">
                   <span>{t("checkout.summary.total")}</span>
-                  <span>¥{(total * 150).toFixed(0)}</span>
+                  <span>{formatPrice(total)}</span>
                 </div>
               </div>
             </div>

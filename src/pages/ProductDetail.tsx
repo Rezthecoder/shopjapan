@@ -3,9 +3,11 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
-import { ArrowLeft, Plus, Minus, Check } from "lucide-react";
+import { ArrowLeft, Plus, Minus, Check, Heart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPrice } from "@/utils/priceFormatter";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -13,8 +15,13 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const { addToCart } = useCart();
-  const { t } = useLanguage();
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const { t, language } = useLanguage();
   const product = products.find(p => p.id === Number(id));
+  const inWishlist = product ? isInWishlist(product.id) : false;
+
+  const displayName = product ? (language === "ja" ? product.nameJa : product.name) : "";
+  const displayCategory = product ? (language === "ja" ? product.categoryJa : product.category) : "";
 
   if (!product) {
     return (
@@ -80,13 +87,13 @@ const ProductDetail = () => {
           {/* Product Info */}
           <div className="flex flex-col">
             <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
-              {product.category}
+              {displayCategory}
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {product.name}
+              {displayName}
             </h1>
             <p className="text-3xl font-bold text-foreground mb-6">
-              ¥{(product.price * 150).toFixed(0)}
+              {formatPrice(product.price)}
             </p>
 
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -148,6 +155,20 @@ const ProductDetail = () => {
               </div>
             </div>
 
+            {/* Wishlist Button */}
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full mb-3"
+              onClick={() => {
+                toggleWishlist(product);
+                toast.success(inWishlist ? "Removed from wishlist" : "Added to wishlist");
+              }}
+            >
+              <Heart className={`mr-2 h-5 w-5 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
+              {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+            </Button>
+
             {/* Add to Cart */}
             <Button
               variant="secondary"
@@ -155,7 +176,7 @@ const ProductDetail = () => {
               className="w-full"
               onClick={handleAddToCart}
             >
-              カートに追加 - ¥{(product.price * quantity * 150).toFixed(0)}
+              カートに追加 - {formatPrice(product.price * quantity)}
             </Button>
           </div>
         </div>

@@ -1,14 +1,16 @@
-import { ShoppingCart, Menu, Search } from "lucide-react";
+import { ShoppingCart, Menu, Search, Heart, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const { totalItems } = useCart();
+  const { wishlist } = useWishlist();
   const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -141,11 +143,28 @@ const Navbar = () => {
             </Link>
             <a
               href="#faq"
-              onClick={handleFaqClick}
+              onClick={(e) => {
+                handleFaqClick(e);
+                setIsMenuOpen(false);
+              }}
               className="block text-sm font-medium hover:text-primary transition-colors cursor-pointer"
             >
               {t("nav.faq")}
             </a>
+            <Link
+              to="/wishlist"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Wishlist
+            </Link>
+            <Link
+              to="/my-orders"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              My Orders
+            </Link>
           </div>
         )}
       </div>

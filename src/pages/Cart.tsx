@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { ShoppingBag, Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatPrice } from "@/utils/priceFormatter";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCart();
@@ -58,16 +59,16 @@ const Cart = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">{t("cart.subtotal")}</span>
-                    <span className="font-medium">¥{(totalPrice * 150).toFixed(0)}</span>
+                    <span className="font-medium">{formatPrice(totalPrice)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">{t("cart.shipping")}</span>
-                    <span className="font-medium">{shipping === 0 ? t("cart.shipping.free") : `¥${(shipping * 150).toFixed(0)}`}</span>
+                    <span className="font-medium">{shipping === 0 ? t("cart.shipping.free") : formatPrice(shipping)}</span>
                   </div>
                   <Separator />
                   <div className="flex justify-between text-lg font-bold">
                     <span>{t("cart.total")}</span>
-                    <span>¥{((totalPrice + shipping) * 150).toFixed(0)}</span>
+                    <span>{formatPrice(totalPrice + shipping)}</span>
                   </div>
                 </div>
 
