@@ -22,17 +22,31 @@ const Navbar = () => {
       // If already on home page, scroll to FAQ
       const faqSection = document.getElementById('faq');
       if (faqSection) {
-        faqSection.scrollIntoView({ behavior: 'smooth' });
+        faqSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     } else {
       // Navigate to home page first, then scroll after navigation
       navigate('/');
-      setTimeout(() => {
+      // Wait for page to render, then scroll
+      const checkForElement = () => {
         const faqSection = document.getElementById('faq');
         if (faqSection) {
-          faqSection.scrollIntoView({ behavior: 'smooth' });
+          faqSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          // If element not found yet, try again after a short delay
+          setTimeout(checkForElement, 50);
         }
-      }, 100);
+      };
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        setTimeout(checkForElement, 100);
+      });
     }
   };
 

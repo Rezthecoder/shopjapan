@@ -21,8 +21,8 @@ const translations: Record<Language, Record<string, string>> = {
         "nav.faq": "FAQ",
 
         // Index Page
-        "index.hero.title1": "Timeless Style",
-        "index.hero.title2": "Modern Elegance",
+        "index.hero.title1": "Where Fashion Meets Art",
+        "index.hero.title2": "Discover Your Signature Style",
         "index.hero.subtitle": "Curated fashion essentials for your modern wardrobe. High-quality craftsmanship meets contemporary style.",
         "index.hero.cta1": "View Collection",
         "index.hero.cta2": "Learn More",
@@ -103,6 +103,7 @@ const translations: Record<Language, Record<string, string>> = {
         "cart.empty.cta": "View Products",
         "cart.size": "Size",
         "cart.quantity": "Quantity",
+        "cart.selectSize": "Please select a size",
         "cart.summary.title": "Order Summary",
         "cart.subtotal": "Subtotal",
         "cart.shipping": "Shipping",
@@ -168,8 +169,8 @@ const translations: Record<Language, Record<string, string>> = {
         "nav.faq": "よくある質問",
 
         // Index Page
-        "index.hero.title1": "タイムレススタイル",
-        "index.hero.title2": "モダンエレガンス",
+        "index.hero.title1": "ファッションとアートの出会い",
+        "index.hero.title2": "個性的なスタイルを発見",
         "index.hero.subtitle": "モダンなワードローブのために厳選されたファッションエッセンシャル。高品質な職人技と現代的なスタイルが融合。",
         "index.hero.cta1": "コレクションを見る",
         "index.hero.cta2": "もっと詳しく",
@@ -250,6 +251,7 @@ const translations: Record<Language, Record<string, string>> = {
         "cart.empty.cta": "商品を見る",
         "cart.size": "サイズ",
         "cart.quantity": "数量",
+        "cart.selectSize": "サイズを選択してください",
         "cart.summary.title": "注文概要",
         "cart.subtotal": "小計",
         "cart.shipping": "配送料",

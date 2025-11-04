@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { ArrowLeft, Plus, Minus, Check } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -12,6 +13,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const { addToCart } = useCart();
+  const { t } = useLanguage();
   const product = products.find(p => p.id === Number(id));
 
   if (!product) {
@@ -30,7 +32,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product.sizes && product.sizes.length > 0 && !selectedSize) {
-      toast.error("Please select a size", {
+      toast.error(t("cart.selectSize"), {
         duration: 5000,
         style: {
           fontSize: '20px',
