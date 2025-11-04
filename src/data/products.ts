@@ -101,6 +101,16 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"]
   },
   {
+    id: 10,
+    name: "Designer Leather Loafers",
+    price: 285.00,
+    image: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=800&auto=format&fit=crop",
+    category: "Footwear",
+    description: "Handcrafted Italian leather loafers with premium finish. Perfect for sophisticated gentlemen.",
+    features: ["Italian leather", "Hand-stitched", "Cushioned footbed", "Rubber sole"],
+    sizes: ["7", "8", "9", "10", "11", "12"]
+  },
+  {
     id: 11,
     name: "Silk Slip Dress",
     price: 215.00,
@@ -212,13 +222,13 @@ export const products: Product[] = [
   },
   {
     id: 22,
-    name: "Floral Print Summer Dress",
-    price: 135.00,
-    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&auto=format&fit=crop",
-    category: "Dresses",
-    description: "Light and airy floral print dress perfect for summer days. Features a flowing silhouette.",
-    features: ["Floral print", "Lightweight fabric", "Adjustable straps", "Machine washable"],
-    sizes: ["XS", "S", "M", "L", "XL"]
+    name: "Men's Tailored Tuxedo Jacket",
+    price: 495.00,
+    image: "https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=800&auto=format&fit=crop",
+    category: "Outerwear",
+    description: "Exquisite tuxedo jacket with peak lapels and satin detailing. Perfect for black-tie events.",
+    features: ["Wool blend", "Satin lapels", "Tailored fit", "Dry clean only"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 23,
@@ -282,13 +292,13 @@ export const products: Product[] = [
   },
   {
     id: 29,
-    name: "Elegant Evening Gown",
-    price: 385.00,
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&auto=format&fit=crop",
-    category: "Dresses",
-    description: "Stunning floor-length evening gown with a sophisticated silhouette. Perfect for formal events.",
-    features: ["Luxe fabric", "Side slit", "Hidden zipper", "Dry clean only"],
-    sizes: ["XS", "S", "M", "L", "XL"]
+    name: "Men's Cashmere Overcoat",
+    price: 685.00,
+    image: "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=800&auto=format&fit=crop",
+    category: "Outerwear",
+    description: "Luxurious cashmere overcoat with classic double-breasted design. Ultimate sophistication for winter.",
+    features: ["100% cashmere", "Double-breasted", "Fully lined", "Dry clean only"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 30,
@@ -322,12 +332,32 @@ export const products: Product[] = [
   },
   {
     id: 33,
-    name: "Little Black Cocktail Dress",
-    price: 225.00,
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&auto=format&fit=crop",
-    category: "Dresses",
-    description: "Timeless little black dress with modern cut. An essential piece for every wardrobe.",
-    features: ["Classic silhouette", "Hidden zipper", "Lined", "Dry clean only"],
-    sizes: ["XS", "S", "M", "L", "XL"]
+    name: "Men's Slim-Fit Dress Shirt",
+    price: 145.00,
+    image: "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=800&auto=format&fit=crop",
+    category: "Tops",
+    description: "Premium Italian cotton dress shirt with French cuffs. Refined elegance for the modern gentleman.",
+    features: ["Italian cotton", "French cuffs", "Slim fit", "Machine washable"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 34,
+    name: "Men's Velvet Dinner Jacket",
+    price: 525.00,
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&auto=format&fit=crop",
+    category: "Outerwear",
+    description: "Opulent velvet dinner jacket in deep burgundy. Make a statement at any formal occasion.",
+    features: ["Velvet fabric", "Shawl collar", "Satin lining", "Dry clean only"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 35,
+    name: "Men's Pleated Dress Trousers",
+    price: 195.00,
+    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop",
+    category: "Bottoms",
+    description: "Classic pleated dress trousers with elegant drape. Essential formal wear for discerning gentlemen.",
+    features: ["Wool blend", "Pleated front", "Adjustable waist", "Dry clean recommended"],
+    sizes: ["30", "32", "34", "36", "38", "40"]
   },
 ];

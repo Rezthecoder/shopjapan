@@ -69,6 +69,21 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.privacy": "Privacy Policy",
         "footer.terms": "Terms of Service",
 
+        // FAQ
+        "faq.title": "Frequently Asked Questions",
+        "faq.q1": "What is your return policy?",
+        "faq.a1": "We accept returns within 30 days of purchase for unworn items with original tags. Free return shipping for defective items.",
+        "faq.q2": "How long does shipping take?",
+        "faq.a2": "Standard shipping takes 5-7 business days. Express shipping (2-3 days) is available at checkout.",
+        "faq.q3": "Do you ship internationally?",
+        "faq.a3": "Yes, we ship to over 50 countries worldwide. International shipping times vary by location (7-14 business days).",
+        "faq.q4": "How can I track my order?",
+        "faq.a4": "You'll receive a tracking number via email once your order ships. You can track your package on our website or the carrier's site.",
+        "faq.q5": "What payment methods do you accept?",
+        "faq.a5": "We accept all major credit cards, PayPal, and Apple Pay for secure checkout.",
+        "faq.q6": "How do I know what size to order?",
+        "faq.a6": "Each product page includes a detailed size guide. If you're between sizes, we recommend sizing up for comfort.",
+
         // Cart
         "cart.title": "Shopping Cart",
         "cart.empty.title": "Your cart is empty",
@@ -188,6 +203,21 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.copyright": "© 2025 Luxe Boutique. All rights reserved.",
         "footer.privacy": "プライバシーポリシー",
         "footer.terms": "利用規約",
+
+        // FAQ
+        "faq.title": "よくある質問",
+        "faq.q1": "返品ポリシーについて教えてください",
+        "faq.a1": "未使用で元のタグが付いている商品は、購入後30日以内の返品を受け付けています。不良品の場合は無料で返品配送いたします。",
+        "faq.q2": "配送にはどのくらいかかりますか？",
+        "faq.a2": "通常配送は5〜7営業日です。お急ぎの場合は、チェックアウト時に速達配送（2〜3日）をご利用いただけます。",
+        "faq.q3": "海外発送は可能ですか？",
+        "faq.a3": "はい、50カ国以上に発送しています。国際配送の所要時間は地域により異なります（7〜14営業日）。",
+        "faq.q4": "注文の追跡はできますか？",
+        "faq.a4": "商品発送後、追跡番号をメールでお送りします。当サイトまたは配送業者のサイトで荷物を追跡できます。",
+        "faq.q5": "どのような支払い方法が利用できますか？",
+        "faq.a5": "主要なクレジットカード、PayPal、Apple Payでの安全な決済に対応しています。",
+        "faq.q6": "サイズの選び方を教えてください",
+        "faq.a6": "各商品ページに詳細なサイズガイドがあります。サイズで迷われた場合は、快適さのためワンサイズ上をお勧めします。",
 
         // Cart
         "cart.title": "ショッピングカート",

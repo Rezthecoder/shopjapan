@@ -143,6 +143,27 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-gradient-to-r from-violet-100 to-purple-100 dark:from-violet-900 dark:to-purple-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("faq.title")}</h2>
+          </div>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            {[1, 2, 3, 4, 5, 6].map((num) => (
+              <div key={num} className="bg-card/50 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h3 className="font-bold text-lg text-foreground mb-3">
+                  {t(`faq.q${num}`)}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t(`faq.a${num}`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white py-16">
         <div className="container mx-auto px-4">
