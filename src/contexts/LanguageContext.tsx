@@ -69,6 +69,21 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.privacy": "Privacy Policy",
         "footer.terms": "Terms of Service",
 
+        // FAQ
+        "faq.title": "Frequently Asked Questions",
+        "faq.q1": "What is your return policy?",
+        "faq.a1": "We offer a 30-day return policy for unworn items with original tags. Free returns on all orders over $100.",
+        "faq.q2": "How long does shipping take?",
+        "faq.a2": "Standard shipping takes 3-5 business days. Express shipping is available for 1-2 day delivery.",
+        "faq.q3": "Do you ship internationally?",
+        "faq.a3": "Yes, we ship to over 50 countries worldwide. International shipping takes 7-14 business days.",
+        "faq.q4": "What payment methods do you accept?",
+        "faq.a4": "We accept all major credit cards, PayPal, Apple Pay, and Google Pay for your convenience.",
+        "faq.q5": "How do I track my order?",
+        "faq.a5": "Once your order ships, you'll receive a tracking number via email. You can track your package in real-time.",
+        "faq.q6": "Are your products authentic?",
+        "faq.a6": "Absolutely. We guarantee 100% authentic products sourced directly from official brands and authorized distributors.",
+
         // Cart
         "cart.title": "Shopping Cart",
         "cart.empty.title": "Your cart is empty",
@@ -188,6 +203,21 @@ const translations: Record<Language, Record<string, string>> = {
         "footer.copyright": "© 2025 Luxe Boutique. All rights reserved.",
         "footer.privacy": "プライバシーポリシー",
         "footer.terms": "利用規約",
+
+        // FAQ
+        "faq.title": "よくある質問",
+        "faq.q1": "返品ポリシーは何ですか？",
+        "faq.a1": "未着用で元のタグが付いている商品は30日間の返品ポリシーを提供しています。¥15,000以上のご注文は返品送料無料です。",
+        "faq.q2": "配送にはどのくらいかかりますか？",
+        "faq.a2": "通常配送は3〜5営業日かかります。1〜2日配送の速達配送もご利用いただけます。",
+        "faq.q3": "海外発送はできますか？",
+        "faq.a3": "はい、世界50カ国以上に発送しています。国際配送には7〜14営業日かかります。",
+        "faq.q4": "どの支払い方法を受け付けていますか？",
+        "faq.a4": "主要なクレジットカード、PayPal、Apple Pay、Google Payを便利にご利用いただけます。",
+        "faq.q5": "注文の追跡はどうすればいいですか？",
+        "faq.a5": "ご注文が発送されると、追跡番号がメールで送信されます。リアルタイムで荷物を追跡できます。",
+        "faq.q6": "商品は本物ですか？",
+        "faq.a6": "もちろんです。公式ブランドおよび正規販売店から直接調達した100%本物の商品を保証します。",
 
         // Cart
         "cart.title": "ショッピングカート",
