@@ -11,7 +11,7 @@
  * - Language-aware category display
  */
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
@@ -23,12 +23,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Products = () => {
   const { language } = useLanguage();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Filter and sort state
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<string>("default");
   const [priceRange, setPriceRange] = useState<string>("all");
+
+  // Simulate initial loading for skeleton effect
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Get unique categories from products
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
@@ -106,7 +113,7 @@ const Products = () => {
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-card p-6 rounded-lg border border-border mb-8 space-y-4">
+        <div className="bg-card p-6 rounded-lg border border-border mb-8 space-y-4 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -196,11 +203,34 @@ const Products = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="animate-fade-in-up" style={{ animationDelay: `${i * 0.05}s` }}>
+                <div className="bg-card rounded-lg border border-border overflow-hidden">
+                  <div className="aspect-square bg-gradient-to-r from-muted via-muted/50 to-muted animate-shimmer bg-[length:2000px_100%]" />
+                  <div className="p-5 space-y-3">
+                    <div className="h-3 bg-muted rounded animate-pulse" />
+                    <div className="h-5 bg-muted rounded w-3/4 animate-pulse" />
+                    <div className="h-6 bg-muted rounded w-1/2 animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+        )}
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-12">
