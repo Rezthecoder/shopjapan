@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroImage from "@/assets/hero-fashion.jpg";
+import heroImage from "@/assets/hero-jewelry.jpg";
 
 const Index = () => {
   const { t, language } = useLanguage();
