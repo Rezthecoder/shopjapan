@@ -6,7 +6,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroImage from "@/assets/hero-jewelry.jpg";
+// Using external image URL - beautiful woman wearing jewelry
+const heroImage = "https://w0.peakpx.com/wallpaper/738/1007/HD-wallpaper-pretty-woman-jewellery-model-makeup-graph.jpg";
 
 const Index = () => {
   const { t, language } = useLanguage();
@@ -35,15 +36,13 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+      <section className="relative h-[700px] md:h-[900px] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Luxury Jewelry Collection"
-            className="w-full h-full object-cover brightness-110 saturate-125"
+            className="w-full h-full object-cover object-center brightness-110 saturate-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20" />
         </div>
 
         <div className="relative container mx-auto px-4 h-full flex items-center z-10">
