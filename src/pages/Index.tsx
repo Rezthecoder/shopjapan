@@ -6,9 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { products } from "@/data/products";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-// Using beautiful vibrant jewelry image for hero section
-const heroImage = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1920&auto=format&fit=crop&q=90";
+import heroImage from "@/assets/hero-fashion.jpg";
 
 const Index = () => {
   const { t, language } = useLanguage();

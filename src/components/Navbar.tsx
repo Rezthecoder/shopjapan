@@ -105,9 +105,6 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <Search className="h-5 w-5" />
-            </Button>
             <LanguageToggle />
             <ThemeToggle />
             <Link to="/cart">
