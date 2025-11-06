@@ -34,9 +34,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const displayCategory = language === "ja" ? product.categoryJa : product.category;
 
   return (
-    <div className="group relative h-full">
+    <div className="group relative">
       <Link to={`/product/${product.id}`}>
-        <Card className="relative overflow-hidden border-border hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-500 h-full bg-gradient-to-br from-background to-muted/20 hover:border-primary/50">
+        <Card className="relative overflow-hidden border-border hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 h-full bg-gradient-to-br from-background to-muted/20">
           <CardContent className="p-0">
             <div className="relative aspect-square overflow-hidden bg-muted">
               <img
@@ -46,7 +46,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <Button variant="secondary" className="w-full shadow-lg font-semibold hover:scale-105 active:scale-95 transition-transform" size="sm">
+                <Button variant="secondary" className="w-full shadow-lg font-semibold" size="sm">
                   詳細を見る
                 </Button>
               </div>
@@ -75,13 +75,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-3 left-3 h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 hover:scale-110 active:scale-95"
+        className="absolute top-3 left-3 h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
         onClick={(e) => {
           e.preventDefault();
           toggleWishlist(product);
         }}
       >
-        <Heart className={`h-5 w-5 transition-all duration-200 ${inWishlist ? 'fill-red-500 text-red-500 animate-pulse-glow' : ''}`} />
+        <Heart className={`h-5 w-5 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
       </Button>
     </div>
   );
